@@ -1,0 +1,60 @@
+﻿@model Invest.Models.Auth
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="">
+    <div class="shadow-lg p-5 mb-5 rounded card col-md-6 ml-auto mr-auto">
+        <div class="card-body">
+            <h3 class="card-title mb-0">
+                Monitor Transactions with <br />Axis Portal
+            </h3>
+
+            <p class="card-subtitle">Please enter your Phone Number.</p>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mt-4 col-md-12">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    
+                    @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Email" })
+
+                </div>
+                <div class="form-group">
+                    
+                    @Html.PasswordFor(m => m.Pwd, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-block shadow" value="Login"/>
+                </div>
+
+                    <p class="text-center">OR</p>
+
+
+                    <div class="row mb-2">
+
+                        @Html.ActionLink("Sign Up", "Validate", "Authentication", new { area = "" }, new { @class = "btn  btn-dark btn-block" })
+
+                    </div>
+
+                    <div class="row text-center">
+
+                        <p class="text-xxs text-center text-muted">
+                            By signing in you agree to Axis'
+                            <a href="#">Terms and Conditions</a> and
+                            <a href="#">Privacy Policy</a>.
+                        </p>
+
+                    </div>
+                
+                
+                } 
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

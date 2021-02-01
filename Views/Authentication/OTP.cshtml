@@ -1,0 +1,54 @@
+﻿
+
+@{
+    ViewBag.Title = "OTP";
+}
+
+<div class="">
+    <div class="shadow-lg p-5 mb-5 rounded card col-md-6 ml-auto mr-auto">
+        <div class="card-body">
+            <h3 class="card-title mb-0">
+                Monitor Transactions with <br />Axis Portal
+            </h3>
+
+            <p class="card-subtitle">Please enter your Phone Number.</p>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mt-4 col-md-12">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                    
+                        <div class="row mb-3">
+                            <input class="col-md-12 form-control"  />
+                        </div>
+
+                    </div>
+                  
+
+
+                    <div class="row mb-2">
+
+                        @Html.ActionLink("Sign Up", "SignUp", "Authentication", new { area = "" }, new { @class = "btn  btn-dark btn-block" })
+
+                    </div>
+
+                    <div class="row text-center">
+
+                        <p class="text-xxs text-center text-muted">
+                            By signing in you agree to Axis'
+                            <a href="#">Terms and Conditions</a> and
+                            <a href="#">Privacy Policy</a>.
+                        </p>
+
+                    </div>
+                
+                
+                } 
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
