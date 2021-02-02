@@ -140,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Auth.cs" />
+    <Compile Include="Models\InvestmentPremium.cs" />
     <Compile Include="Models\MEMBER.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\PREMIUM.cs" />

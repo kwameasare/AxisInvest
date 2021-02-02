@@ -3,15 +3,18 @@ using System.Web.Mvc;
 using Invest.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
 namespace Invest.Controllers
 {
     public class AuthenticationController : Controller
     {
         private Model1 _db = new Model1();
-        private int ID=0;
+        private int _id;
 
+       
 
+       
         // GET: Authentication
         public ActionResult Login()
         {
@@ -32,11 +35,12 @@ namespace Invest.Controllers
             
             if (data.Any())
             {
-                var dat = _db.MEMBERs.Where(s => s.AccountID.Equals(data.FirstOrDefault().AccountID)).ToList();
+                var dat = _db.MEMBERs.Find(data.FirstOrDefault().AccountID);
                 //add session
-                Session["FullName"] = dat.FirstOrDefault().Othernames + " " + dat.FirstOrDefault().Surname;
+                Session["FullName"] = dat.Othernames + " " + dat.Surname;
                 Session["Username"] = data.FirstOrDefault().UserName;
-                Session["idUser"] = dat.FirstOrDefault().AccountNo;
+                Session["idUser"] = dat.AccountNo;
+                Session["Acc"] = dat.AccountID;
                 return RedirectToAction("Dashboard", "Dashboard");
             }
             else
@@ -55,12 +59,14 @@ namespace Invest.Controllers
         //POST: SignUp
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp(Auth _user)
+        public ActionResult SignUp([Bind(Include = "AuthID,AccountID,UserName,Pwd")] Auth _user)
         {
+            
             var pass= GetMD5(_user.Pwd);
             if (!ModelState.IsValid) return View();
             _user.Pwd = pass;
-            _user.AccountID = ID;
+            _id = (int)Session["Acc"];
+            _user.AccountID = _id;
             _db.Configuration.ValidateOnSaveEnabled = false;
             _db.Auths.Add(_user);
             _db.SaveChanges();
@@ -85,16 +91,16 @@ namespace Invest.Controllers
             
             
             var data = _db.MEMBERs.Where(s => s.CellPhone.Equals(numberPhone) ).ToList();
-            ID = data.FirstOrDefault().AccountID;
-
-
-            System.Diagnostics.Debug.WriteLine("MY ID IS" + ID);
+            
 
             if (data.Any())
             {
-               
-                //add session
 
+
+                _id = data.FirstOrDefault().AccountID;
+
+
+                System.Diagnostics.Debug.WriteLine("MY ID IS" + _id);
 
                 Session["Acc"] = data.FirstOrDefault().AccountID;
                 return RedirectToAction("OTP" );

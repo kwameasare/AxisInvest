@@ -3,15 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Invest.Models;
 
-namespace WebApplication1.Controllers
+namespace Invest.Controllers
 {
     public class DashboardController : Controller
     {
+
+        private readonly Model1 _db = new Model1();
+        private int _id;
+        private List<InvestmentPremium> Ipremiums=new List<InvestmentPremium>();
+
+
         // GET: Dashboard
         public ActionResult Dashboard()
         {
-            return View();
+            _id = (int)Session["Acc"];
+            var data = _db.PREMIUMs.Where(d=>d.AccountID==_id).ToList();
+            
+            
+            foreach (var premium in data)
+            {
+                var productData = _db.PRODUCTs.Find(premium.ProductID);
+                
+                var Iprem=new InvestmentPremium();
+                Iprem.Amount = premium.PremiumAmount;
+                Iprem.DatePaid = premium.PaymentDate;
+                Iprem.InvestPack = productData.ProductNa;
+
+                Ipremiums.Add(Iprem);
+
+            }
+
+            return View(Ipremiums);
         }
     }
 }

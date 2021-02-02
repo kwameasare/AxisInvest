@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Invest.Models.InvestmentPremium>
+@{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
@@ -8,3 +9,38 @@
 
 
 <p>Dashboard</p>
+
+
+
+<table class="table">
+    <tr>
+        <
+        <th>
+            Investment Package
+        <th>
+            Amount Invested
+        </th>
+        <th>
+            Date of Payment
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.InvestPack)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePaid)
+            </td>
+
+        </tr>
+    }
+
+</table>
