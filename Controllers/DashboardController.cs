@@ -29,7 +29,7 @@ namespace Invest.Controllers
                 var iprem = new InvestmentPremium
                 {
                     Amount = premium.PremiumAmount,
-                    DatePaid = premium.PaymentDate,
+                    DatePaid = premium.PaymentDate.ToString(),
                     InvestPack = productData.ProductNa
                 };
 

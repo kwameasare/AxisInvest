@@ -15,7 +15,7 @@ namespace Invest.Models
         public decimal? Amount { get; set; }
 
    
-        public DateTime? DatePaid { get; set; }
+        public string DatePaid { get; set; }
 
 
     }
