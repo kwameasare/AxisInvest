@@ -5,54 +5,75 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Axis Client Portal</title>
+    @* <link href="@Url.Content("~/Content/dash.css")" rel="stylesheet" type="text/css" /> *@
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#1A243D;">
-            <div class="container">
-                <a class="navbar-brand text-white" href="javascript:void()">
-                    Axis Client Portal
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand "> 
+                    Investify Client Portal 
+               </a> 
+        <ul class="navbar-nav">
+            <!-- Avatar -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center"
+                   href="#"
+                   data-target="#navbarSupportedContent"
+                   aria-controls="navbarSupportedContent"
+                   role="button"
+                   data-toggle="dropdown"
+                   aria-expanded="false">
+                   
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                         class="rounded-circle"
+                         height="30"
+                         alt=""
+                         loading="lazy" />
                 </a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars" style="color: white;"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav ml-auto ">
-
-                        <li class="nav-item dropdown">
-                            <div class="row dropdown-toggle mr-6" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                <a class="nav-link text-white " style="padding-left: 10px; padding-right: 5px;" href="javascript:void()">Account  </a>
-                                <img style="height: 50px; width: 50px;" class='img-thumbnail circle dropdown-toggle' src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />
-                            </div>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">Go Home</a>
-                                <a href="javascript.void(0)" class="dropdown-item">Change Password</a>
-                                <!-- <a class="dropdown-item" href="javascript:void()">Profile</a> -->
-                                @Html.ActionLink("Log Out", "Login", "Authentication", new { area = "" }, new { @class = "dropdown-item" })
-
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <div class="container body-content ">
-
-        @RenderBody()
-        <hr />
-        <footer class="mt-4 text-center">
-            <p>&copy; @DateTime.Now.Year - Axis Client Portal</p>
-        </footer>
+                
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                            <ul class="navbar-nav  ">
+                
+                                <li class="nav-item dropdown">
+                                  
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                
+                
+                                        @Html.ActionLink("Log Out", "Login", "Authentication", new { area = "" }, new { @class = "dropdown-item" })
+                
+                                    </div>
+                                </li>
+                            </ul>
+                
+                        </div>
+               
+            </li>
+        </ul>
     </div>
+</nav>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<div class="container body-content ">
+
+    @RenderBody()
+    <hr/>
+    <footer class="mt-4 text-center">
+        <p>&copy; @DateTime.Now.Year - Investify Client Portal</p>
+    </footer>
+</div>
+
+<style>
+    body {
+        padding-top: 00px;
+    }
+</style>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>

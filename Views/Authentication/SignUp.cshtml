@@ -5,55 +5,84 @@
 }
 
 
-<div class="shadow-lg p-5 mb-5 rounded card col-md-6 ml-auto mr-auto">
-    <div class="card-body">
-        <h3 class="card-title mb-0">
-            Monitor Transactions with <br />Axis Portal
-        </h3>
 
-        <p class="card-subtitle">Please enter your Phone Number.</p>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="mt-4 col-md-12">
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-group">
 
-                    @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Create Username" })
+
+
+
+
+
+
+<div class="col-md-8 mr-auto ml-auto">
+
+
+    <div class="card" style="border-radius: 12px">
+
+        <div class="card-text">
+            <div class="portada">
+
+            </div>
+            <div class="container-fluid">
+
+                <div class="col-md-9 title-total ml-auto mr-auto">
+
+                    <h4 class=" text-center card-title mb-1">
+                        You Are Almost There!
+                    </h4>
+
+                    <p class="mt-4 card-subtitle text-center text-xs text-muted">Create A Username And Password.</p>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class=" ">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+
+                                @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Username" })
+
+                            </div>
+                            <div class="form-group">
+
+                                @Html.PasswordFor(m => m.Pwd, new { @class = "form-control", @placeholder = "New Password" })
+                            </div>
+
+                            <div class="form-group">
+
+                                @Html.PasswordFor(m => m.Pwd, new { @class = "form-control", @placeholder = "Confirm Password" })
+                            </div>
+
+                            <div class="form-group mt-5">
+                                <input type="submit" class="btn btn-success btn-block " value="Login" />
+                            </div>
+
+                            
+
+
+
+
+                            <div class="row text-center mt-5">
+
+                                <p class="text-xxs text-center text-muted">
+                                    By signing up you agree to Investify's
+                                    <a href="#">Terms and Conditions</a> and
+                                    <a href="#">Privacy Policy</a>.
+                                </p>
+
+                            </div>
+
+
+                        }
+                    </div>
+
+
 
                 </div>
-                <div class="form-group">
+            </div>
 
-                    @Html.PasswordFor(m => m.Pwd, new { @class = "form-control", @placeholder = "New Password" })
-                </div>
-
-                <div class="form-group">
-
-                    @Html.PasswordFor(m => m.Pwd, new { @class = "form-control", @placeholder = "Re-Enter Password" })
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success btn-block shadow" value="Login" />
-                </div>
-
-                <p class="text-center">OR</p>
-
-
-               
-
-                <div class="row text-center">
-
-                    <p class="text-xxs text-center text-muted">
-                        By signing up you agree to Axis'
-                        <a href="#">Terms and Conditions</a> and
-                        <a href="#">Privacy Policy</a>.
-                    </p>
-
-                </div>
-
-
-            }
         </div>
+
+
+
     </div>
 
 

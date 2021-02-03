@@ -4,22 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Axis Client Portal</title>
+    <link href="@Url.Content("~/Content/authentication.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("Styles", false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
 
    
-    <div class="container body-content ">
+        <div class="container body-content  ">
 
-        @RenderBody()
+            @RenderBody()
+
+        </div>
+
         <hr />
         <footer class="mt-4 text-center">
-            <p>&copy; @DateTime.Now.Year - Axis Client Portal</p>
+            <p>&copy; @DateTime.Now.Year - Investify Client Portal</p>
         </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

@@ -12,7 +12,7 @@ namespace Invest.Controllers
 
         private readonly Model1 _db = new Model1();
         private int _id;
-        private List<InvestmentPremium> Ipremiums=new List<InvestmentPremium>();
+        private readonly List<InvestmentPremium> _iPremiums=new List<InvestmentPremium>();
 
 
         // GET: Dashboard
@@ -25,17 +25,19 @@ namespace Invest.Controllers
             foreach (var premium in data)
             {
                 var productData = _db.PRODUCTs.Find(premium.ProductID);
-                
-                var Iprem=new InvestmentPremium();
-                Iprem.Amount = premium.PremiumAmount;
-                Iprem.DatePaid = premium.PaymentDate;
-                Iprem.InvestPack = productData.ProductNa;
 
-                Ipremiums.Add(Iprem);
+                var iprem = new InvestmentPremium
+                {
+                    Amount = premium.PremiumAmount,
+                    DatePaid = premium.PaymentDate,
+                    InvestPack = productData.ProductNa
+                };
+
+                _iPremiums.Add(iprem);
 
             }
 
-            return View(Ipremiums);
+            return View(_iPremiums);
         }
     }
 }

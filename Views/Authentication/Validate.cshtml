@@ -4,40 +4,59 @@
     ViewBag.Title = "Validate";
 }
 
-<div class="">
-    <div class="shadow-lg p-5 mb-5 rounded card col-md-6 ml-auto mr-auto">
-        <div class="card-body">
-            <h3 class="card-title mb-0">
-                Monitor Transactions with <br />Axis Portal
-            </h3>
 
-            <p class="card-subtitle">Please enter your Phone Number.</p>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="mt-4 col-md-12">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                    
-                        @Html.TextBoxFor(m => m.CellPhone, "", new { @class = "form-control", @placeholder = "Phone Number" })
-
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success btn-block shadow" value="Validate"/>
-                    </div>
-
-                  
+<div class="col-md-8 mr-auto ml-auto">
 
 
-                   
-                
-                
-                } 
+    <div class="card" style="border-radius: 12px">
+
+        <div class="card-text">
+            <div class="portada">
+
             </div>
+            <div class="container-fluid">
+
+                <div class="col-md-9 title-total ml-auto mr-auto">
+
+                    <h4 class=" text-center card-title mb-1">
+                        Let's Set You Up'
+                    </h4>
+
+                    <p class="mt-4 card-subtitle text-center text-xs text-muted">Enter Your Phone Number. You will receive an SMS Validation Code</p>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+
+                                @Html.TextBoxFor(m => m.CellPhone, "", new { @class = "form-control", @placeholder = "Phone Number", required = "required" })
+
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success btn-block " value="Validate" />
+                            </div>
+
+
+
+
+
+
+
+                        }
+                    </div>
+
+
+
+                </div>
+            </div>
+
         </div>
 
 
+
     </div>
+
 
 </div>
